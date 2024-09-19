@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greenmind</title>
+    <title>LAAMIND</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
@@ -103,32 +103,29 @@
 </head>
 <body class="bg-gradient-to-t from-teal-100 to-teal-400 p-4 md:px-32">
     
-    <!-- Navbar -->
     <nav class="p-4 bg-white shadow-md flex justify-between items-center rounded-t-lg">
         <div class="text-2xl font-bold text-gray-800">m.</div>
         <!-- Desktop Menu -->
         <ul class="hidden md:flex space-x-8 text-gray-600">
-            <li><a href="#" class="hover:text-gray-900">Home</a></li>
-            <li><a href="#" class="hover:text-gray-900">Products</a></li>
-            <li><a href="#" class="hover:text-gray-900">Contacts</a></li>
+            <li><a href="#" class="hover:text-gray-900 underline">Home</a></li>
+            <li><a href="./product.html" class="hover:text-gray-900">Products</a></li>
+            <li><a href="./contact.html" class="hover:text-gray-900">Contacts</a></li>
         </ul>
         <div class="hidden md:flex items-center space-x-4">
             <a href="#" class="hover:text-gray-900"><i class="ph ph-shopping-cart"></i></a>
             <a href="#" class="hover:text-gray-900"><i class="ph ph-user"></i></a><span class="font-bold">|</span>
             <a href="#" class="hover:text-gray-900"><i class="ph ph-info"></i></a>
         </div>
-        <!-- Hamburger Menu Button -->
         <button id="menu-btn" class="md:hidden focus:outline-none">
             <i class="ph ph-list text-2xl"></i>
         </button>
     </nav>
 
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden bg-white shadow-md p-6 transition-all ease-in-out duration-500 rounded-b-lg">
         <ul class="space-y-4 text-gray-600">
-            <li><a href="#" class="hover:text-gray-900">Home</a></li>
-            <li><a href="#" class="hover:text-gray-900">Products</a></li>
-            <li><a href="#" class="hover:text-gray-900">Contacts</a></li>
+            <li><a href="#" class="hover:text-gray-900 underline">Home</a></li>
+            <li><a href="./product.html" class="hover:text-gray-900">Products</a></li>
+            <li><a href="./contact.html" class="hover:text-gray-900">Contacts</a></li>
             <li class="flex space-x-4">
                 <a href="#" class="hover:text-gray-900"><i class="ph ph-shopping-cart"></i></a>
                 <a href="#" class="hover:text-gray-900"><i class="ph ph-user"></i></a>
@@ -138,14 +135,11 @@
         </ul>
     </div>
 
-     <!-- Main Section -->
      <section class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto mt-12 p-2 md:p-4 bg-teal-100 rounded-lg border border-r-8 border-b-8 border-black">
-      <!-- Text Content -->
       <div class="w-full md:w-1/2">
           <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">Buy Your<br> Dream Style</h1>
           <p class="mt-4 text-lg text-gray-600 font-semibold">50+ Style Encountered <span class="font-bold">|</span> 100+ Customers</p>
 
-          <!-- Search Bar -->
           <div class="mt-8 flex">
               <input 
                   type="text" 
@@ -282,7 +276,7 @@
     <div class="flex flex-col justify-center items-center text-center mb-8 mt-12">
       <h2 class="text-3xl font-bold">Best Selling Plants</h2>
       <p class="text-gray-500 mt-2">Easiest way to healthy life by buying your favorite plants</p>
-      <button class="@apply text-sm mt-6 border-none rounded-md bg-slate-400 w-full md:w-[300px] h-auto @apply hover:-translate-y-[0.33em] active:@apply translate-y-0;">
+      <button class="@apply text-sm mt-6 border-none rounded-md bg-slate-800 w-full md:w-[300px] h-auto @apply hover:-translate-y-[0.33em] active:@apply translate-y-0;">
       <span class="  @apply block box-border border-2 rounded-md border-slate-900 px-5 py-4 bg-teal-200 text-slate-900 -translate-y-[0.2em] transition-all ease-in @apply hover:-translate-y-[0.33em] active:@apply-translate-y-0">More</span>
     </button>
     </div>

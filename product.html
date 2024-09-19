@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAAMIND</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <style>
+    /* General Scrollbar */
+    body::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    body::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: #C1DCDC;
+        border-radius: 6px;
+        border: 3px solid #f1f1f1;
+    }
+
+    body::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+    }
+
+    /* Featured Products Scrollbar */
+    .product .overflow-x-auto::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .product .overflow-x-auto::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+
+    .product .overflow-x-auto::-webkit-scrollbar-thumb {
+        background-color: #C1DCDC;
+        border-radius: 6px;
+        border: 2px solid #f1f1f1;
+    }
+
+    .product .overflow-x-auto::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+    }
+
+    /* Existing styles... */
+    .image-gallery {
+        display: flex;
+        width: 100%;
+        min-height: 500px;
+        justify-content: space-between;
+        margin-bottom: 32px;
+        margin-right: 10px;
+    }
+
+    .image-box {
+        width: 23%;
+        height: 400px;
+        position: relative;
+    }
+
+    .image-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        border-radius: 5px;
+        transition: all .4s;
+    }
+
+    .image-box img:hover {
+        opacity: .5;
+        transform: translateY(-20px);
+        cursor: pointer;
+    }
+
+    .image-box:nth-child(odd) {
+        align-self: flex-end;
+    }
+
+    .about-info {
+        text-align: center;
+        font-size: 12px;
+        line-height: 24px;
+    }
+</style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-t from-teal-100 to-teal-400 p-4 md:px-32">
+    
+    <nav class="p-4 bg-white shadow-md flex justify-between items-center rounded-t-lg">
+        <div class="text-2xl font-bold text-gray-800">m.</div>
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex space-x-8 text-gray-600">
+            <li><a href="./index.html" class="hover:text-gray-900">Home</a></li>
+            <li><a href="#" class="hover:text-gray-900 underline">Products</a></li>
+            <li><a href="./contact.html" class="hover:text-gray-900">Contacts</a></li>
+        </ul>
+        <div class="hidden md:flex items-center space-x-4">
+            <a href="#" class="hover:text-gray-900"><i class="ph ph-shopping-cart"></i></a>
+            <a href="#" class="hover:text-gray-900"><i class="ph ph-user"></i></a><span class="font-bold">|</span>
+            <a href="#" class="hover:text-gray-900"><i class="ph ph-info"></i></a>
+        </div>
+        <button id="menu-btn" class="md:hidden focus:outline-none">
+            <i class="ph ph-list text-2xl"></i>
+        </button>
+    </nav>
+
+    <div id="mobile-menu" class="hidden bg-white shadow-md p-6 transition-all ease-in-out duration-500 rounded-b-lg">
+        <ul class="space-y-4 text-gray-600">
+            <li><a href="./index.html" class="hover:text-gray-900">Home</a></li>
+            <li><a href="#" class="hover:text-gray-900 underline">Products</a></li>
+            <li><a href="./contact.html" class="hover:text-gray-900">Contacts</a></li>
+            <li class="flex space-x-4">
+                <a href="#" class="hover:text-gray-900"><i class="ph ph-shopping-cart"></i></a>
+                <a href="#" class="hover:text-gray-900"><i class="ph ph-user"></i></a>
+                <span class="font-bold">|</span>
+                <a href="#" class="hover:text-gray-900"><i class="ph ph-list"></i></a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="flex flex-col md:flex-row justify-between bg-[url('./src/img/bg-carrousel.gif')] bg-cover bg-center mt-8 p-2 rounded-md ">
+        <div id="custom-controls-gallery" class="flex flex-col relative w-full rounded-lg mt-6" data-carousel="slide">
+          <!-- Carouseltod -->
+          <div class="relative h-56 overflow-hidden rounded-lg md:h-96 opacity-85">
+               <!-- Item 1 -->
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+              </div>
+              <!-- Item 2 -->
+              <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                  <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+              </div>
+              <!-- Item 3 -->
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+              </div>
+              <!-- Item 4 -->
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+              </div>
+              <!-- Item 5 -->
+              <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+              </div>
+          </div>
+          <div class="flex justify-center items-center pt-4">
+              <button type="button" class="flex justify-center items-center me-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev>
+                  <span class="text-gray-400 hover:text-gray-900 dark:hover:text-white group-focus:text-gray-900 dark:group-focus:text-white">
+                      <svg class="rtl:rotate-180 w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5H1m0 0 4 4M1 5l4-4"/>
+                      </svg>
+                      <span class="sr-only">Previous</span>
+                  </span>
+              </button>
+              <button type="button" class="flex justify-center items-center me-4 h-full cursor-pointer group focus:outline-none" data-carousel-next>
+                  <span class="text-gray-400 hover:text-gray-900 dark:hover:text-white group-focus:text-gray-900 dark:group-focus:text-white">
+                      <svg class="rtl:rotate-180 w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12M13 5l-4-4m4 4-4 4"/>
+                      </svg>
+                      <span class="sr-only">Next</span>
+                  </span>
+              </button>
+          </div>
+        </div>
+        
+      </div>
+      
+      <section class="product max-w-7xl mx-auto mt-8">
+          <div class="flex space-x-4 overflow-x-auto snap-x snap-mandatory overflow-y-hidden p-6">
+              <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-60 flex-shrink-0 snap-start">
+                  <img src="./src/img/nike-1.jpg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+                  <h3 class="text-lg font-semibold text-gray-800">Patta x FC Barcelona x Nike Air Max Plus "Culers del Món"​</h3>
+                  <p class="mt-2 text-gray-600">$20.00</p>
+                  <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                      Add to Cart
+                  </button>
+              </div>
+      
+              <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-60 flex-shrink-0 snap-start">
+                  <img src="./src/img/nike-2.jpg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+                  <h3 class="text-lg font-semibold text-gray-800">Nike Kobe 6 Protro "Reverse Grinch"</h3>
+                  <p class="mt-9 text-gray-600">$25.00</p>
+                  <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border border-b-4 border-black font-semibold">
+                      Add to Cart
+                  </button>
+              </div>
+      
+              <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-60 flex-shrink-0 snap-start">
+                  <img src="./src/img/nike-3.jpg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+                  <h3 class="text-lg font-semibold text-gray-800">Nike Air Jordan 1 High OG "White Cement"</h3>
+                  <p class="mt-9 text-gray-600">$30.00</p>
+                  <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                      Add to Cart
+                  </button>
+              </div>
+      
+              <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-60 flex-shrink-0 snap-start">
+                  <img src="./src/img/nike-4.jpg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+                  <h3 class="text-lg font-semibold text-gray-800">Nike React Element 87:Nike Dunk Low "Grey Fog"</h3>
+                  <p class="mt-2 text-gray-600">$35.00</p>
+                  <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                      Add to Cart
+                  </button>
+              </div>
+      
+              <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-60 flex-shrink-0 snap-start">
+                  <img src="./src/img/nike-4.jpg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+                  <h3 class="text-lg font-semibold text-gray-800">Nike React Element 87:Nike Dunk Low "Grey Fog"</h3>
+                  <p class="mt-2 text-gray-600">$35.00</p>
+                  <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                      Add to Cart
+                  </button>
+              </div>
+              
+              <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-60 flex-shrink-0 snap-start">
+                  <img src="./src/img/nike-4.jpg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+                  <h3 class="text-lg font-semibold text-gray-800">Nike React Element 87:Nike Dunk Low "Grey Fog"</h3>
+                  <p class="mt-2 text-gray-600">$35.00</p>
+                  <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                      Add to Cart
+                  </button>
+                </div>
+            </div>
+      </section>
+
+      
+
+<div id="default-carousel" class="relative w-full mt-10" data-carousel="slide">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+         <!-- Item 1 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="./src/img/Apple Watch SE (2nd generation) (GPS, 40mm) Smart watch.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">   
+        </div>
+        <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="./src/img/Apple Watch SE (GPS, 2022), 40mm Starlight Aluminium Case with Starlight Sport Band.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 3 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="./src/img/Apple Watch Series 9.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 4 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="./src/img/Sport Band - 45mm _ Ultra Orange _ NOMAD®.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 5 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="./src/img/Sport Watch Bands for Apple Watch - 38mm_40mm_41mm M_L _ Pink.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+    </div>
+    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+    </div>
+</div>
+
+      
+      <section  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-8 gap-6">
+        <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-full flex-shrink-0 snap-start">
+            <img src="./src/img/Apple Watch SE (2nd generation) (GPS, 40mm) Smart watch.jpeg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">/Apple Watch SE (2nd generation) (GPS, 40mm)</h3>
+            <p class="mt-2 text-gray-600">$95.00</p>
+            <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                Add to Cart
+            </button>
+          </div>
+        <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-full flex-shrink-0 snap-start">
+            <img src="./src/img/Apple Watch SE (GPS, 2022), 40mm Starlight Aluminium Case with Starlight Sport Band.jpeg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">Apple Watch SE, Starlight Aluminium Case with Starlight</h3>
+            <p class="mt-2 text-gray-600">$255.00</p>
+            <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                Add to Cart
+            </button>
+          </div>
+        <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-full flex-shrink-0 snap-start">
+            <img src="./src/img/Apple Watch Series 9.jpeg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">Apple Watch Series 9</h3>
+            <p class="mt-16 text-gray-600">$120.0</p>
+            <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                Add to Cart
+            </button>
+          </div>
+        <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-full flex-shrink-0 snap-start">
+            <img src="./src/img/Sport Band - 45mm _ Ultra Orange _ NOMAD®.jpeg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">Sport Band - 45mm _ Ultra Orange NOMAD®</h3>
+            <p class="mt-2 text-gray-600">$199.0</p>
+            <button class="mt-12 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                Add to Cart
+            </button>
+          </div>
+        <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-full flex-shrink-0 snap-start">
+            <img src="./src/img/Sport Watch Bands for Apple Watch - 38mm_40mm_41mm M_L _ Pink.jpeg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">Sport Watch Bands for Apple Watch - 38mm 40mm 41mm ML Pink</h3>
+            <p class="mt-2 text-gray-600">$999.00</p>
+            <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                Add to Cart
+            </button>
+          </div>
+
+      </section>
+<div id="default-carousel" class="relative w-full mt-10" data-carousel="slide">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96 bg-[url('/src/img/tshist.png')] bg-cover bg-center">
+    </div>  
+      <section  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mt-8 gap-6">
+        <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-full flex-shrink-0 snap-start">
+            <img src="./src/img/PARIS SPRAYED T-SHIRT in white  - Palm Angels® Official.jpeg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">PARIS SPRAYED T-SHIRT in white</h3>
+            <p class="mt-16 text-gray-600">$45.00</p>
+            <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                Add to Cart
+            </button>
+          </div>
+        <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-full flex-shrink-0 snap-start">
+            <img src="./src/img/Stussy Galaxy T-Shirt - White.jpeg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">Stussy Galaxy T-Shirt</h3>
+            <p class="mt-24 text-gray-600">$55.00</p>
+            <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                Add to Cart
+            </button>
+          </div>
+        <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-full flex-shrink-0 snap-start">
+            <img src="./src/img/Stylish Men's Shirts for the Modern Man.jpeg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">Stylish Men's Shirts for the Modern Man</h3>
+            <p class="mt-16 text-gray-600">$20.0</p>
+            <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                Add to Cart
+            </button>
+          </div>
+        <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-full flex-shrink-0 snap-start">
+            <img src="./src/img/Nike AS Men's Nike Sportswear Tee JUST DO IT SWOOSH White AR5007-100.jpeg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">Nike AS Men's Nike Sportswear Tee JUST DO IT SWOOSH </h3>
+            <p class="mt-9 text-gray-600">$99.0</p>
+            <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                Add to Cart
+            </button>
+          </div>
+        <div class="bg-white rounded-lg shadow-md p-4 transition-all ease-in-out duration-500 w-full flex-shrink-0 snap-start">
+            <img src="./src/img/Nike Just Do It Grey Slogan TShirt - Large.jpeg" alt="Product Image" class="w-full h-40 object-cover rounded-md mb-4">
+            <h3 class="text-lg font-semibold text-gray-800">/Nike Just Do It Grey Slogan TShirt</h3>
+            <p class="mt-16 text-gray-600">$99.00</p>
+            <button class="mt-4 px-4 py-2 bg-teal-200 text-white rounded-md hover:bg-slate-400 hover:text-black transition-all ease-in-out duration-500 border  border-b-4 border-black font-semibold">
+                Add to Cart
+            </button>
+          </div>
+
+      </section>
+    
+<div class="mb-64"></div>
+<footer class="bg-teal-100 p-12 rounded-t-lg border border-r-8 border-b-8 border-black">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between">
+      <div class="mb-4 md:mb-0">
+        <h2 class="text-lg font-bold">LAAMIND</h2>
+        <p class="mt-2">We help you find your dream style😉</p>
+        <div class="flex mt-4 space-x-4">
+          <!-- Social Media Icontol -->
+          <a href="#" aria-label="Facebook">
+            <i class="ph ph-facebook-logo"></i>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <i class="ph ph-instagram-logo"></i>
+          </a>
+          <a href="#" aria-label="Twitter">
+            <i class="ph ph-x-logo"></i>
+          </a>
+        </div>
+        <p class="mt-4 text-sm text-gray-600">2023 all Rights Reserved Term of use LAAMIND</p>
+      </div>
+      <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
+        <div>
+          <h3 class="font-semibold">Information</h3>
+          <ul class="mt-2 space-y-1">
+            <li><a href="#" class="text-gray-600 hover:text-gray-800">About</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-800">Product</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-800">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Company</h3>
+          <ul class="mt-2 space-y-1">
+            <li><a href="#" class="text-gray-600 hover:text-gray-800">Community</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-800">Career</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-800">Our story</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold">Contact</h3>
+          <ul class="mt-2 space-y-1">
+            <li><a href="#" class="text-gray-600 hover:text-gray-800">Getting Started</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-800">Pricing</a></li>
+            <li><a href="#" class="text-gray-600 hover:text-gray-800">Resources</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>

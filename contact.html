@@ -101,9 +101,9 @@
         }
     </script>
 </head>
-<body class="bg-gradient-to-t from-teal-100 to-teal-400 p-4 md:px-32">
+<body class="bg-slate-200 p-4">
     
-    <nav class="p-4 bg-white shadow-md flex justify-between items-center rounded-t-lg">
+    <nav class="py-4 md:py-0 px-4 bg-white shadow-md flex justify-between items-center rounded-t-lg">
         <div class="text-2xl font-bold text-gray-800">m.</div>
         <!-- Desktop Menu -->
         <ul class="hidden md:flex space-x-8 text-gray-600">
@@ -111,6 +111,16 @@
             <li><a href="./product.html" class="hover:text-gray-900">Products</a></li>
             <li><a href="#" class="hover:text-gray-900 underline">Contacts</a></li>
         </ul>
+        <div class="p-2 hidden md:flex">
+            <input 
+                type="text" 
+                placeholder="What are you looking for?" 
+                class="w-72 md:w-80 rounded-md border border-[#C1DCDC]"
+            />
+            <button class="ml-2 p-4 bg-teal-400 text-white rounded-md hover:bg-slate-400 transition-all ease-in-out duration-500 border border-white">
+                <i class="ph ph-magnifying-glass"></i>
+            </button>
+        </div>
         <div class="hidden md:flex items-center space-x-4">
             <a href="#" class="hover:text-gray-900"><i class="ph ph-shopping-cart"></i></a>
             <a href="#" class="hover:text-gray-900"><i class="ph ph-user"></i></a><span class="font-bold">|</span>
